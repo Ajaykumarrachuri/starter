@@ -9,7 +9,7 @@ useEffect(() => {
 },[]);
 
   return (
-    <div className="Nav">  
+    <div className="text-2xl font-serif font-bold">  
       <p>home page</p>
       <span>{state}</span>
     </div>

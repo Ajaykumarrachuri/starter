@@ -1,7 +1,7 @@
 import axios from "axios";
 
-export function request(url) {
-  const response = axios(url).then((response) => {
+export function request(props) {
+  const response = axios(props).then((response) => {
     return response;
   });
   return response;

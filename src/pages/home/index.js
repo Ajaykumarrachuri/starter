@@ -1,18 +1,26 @@
 import React, { useEffect, useState } from "react";
+import Table from "../../components/table";
 import { request } from "../../library/request";
 
 const home = () => {
-  const url = "https://random-data-api.com/api/address/random_address";
-  const [state, setstate] = useState([]);
+  const [state, setstate] = useState({ tickers: [] });
   useEffect(async () => {
-    const response = await request(url);
+    const response = await request({
+      method: "GET",
+      url: "https://api.polygon.io/v2/reference/tickers",
+      params: {
+        sort: "ticker",
+        perpage: "50",
+        page: "1",
+        apiKey: "QpQBMRyMdHpMPBQzbSRpRfpRvJVW2xxp",
+      },
+    });
     console.log(response);
     setstate(response.data);
   }, []);
   return (
     <div className="text-2xl font-serif font-bold">
-      <p>home page</p>
-      <span>{JSON.stringify(state, null, 10)}</span>
+      <Table data={state.tickers} />
     </div>
   );
 };
